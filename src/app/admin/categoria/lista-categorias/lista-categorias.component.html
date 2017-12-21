@@ -1,0 +1,40 @@
+<div class="col-md-12">
+  <a routerLink="/admin/categoria/inserir" type="button" class="btn-md btn btn-default get pull-right">Nova Categoria</a><br><br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th title="Identificador da categoria.">#</th>
+        <th title="Nome da categoria.">Categoria</th>
+        <th title="Ações">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+       <tr *ngFor="let categoria of categorias">
+        <th scope="row">{{categoria.id}}</th>
+        <td>{{categoria.nome}}</td>
+        <td>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Atenção</h4>
+                    </div>
+                    <div class="modal-body">
+                      <input type="hidden" id="valId">
+                      Realmente deseja Excluir este item?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                      <button type="button" data-dismiss="modal" (click)="deletarCategoria(categoria.id)" class="btn btn-danger">Excluir</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button data-toggle="modal" data-target="#myModal" class="pull-right btn-md btn btn-danger">Excluir</button>
+              <button class="pull-right btn-md btn btn-warning" [routerLink]="['/admin/categoria/atualizar', categoria.id]">Editar</button>
+             <button class="pull-right btn-md btn btn-info" [routerLink]="['/admin/categoria/visualizar', categoria.id]" >Vizualizar</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
